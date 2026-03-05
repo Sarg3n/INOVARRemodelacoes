@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101B22" />
+  <title>Obrigado — INOVAR Remodelações</title>
+  <meta name="description" content="Pedido recebido. Vamos responder com rapidez e clareza." />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0E171D;
+      --ink:#ECF3F7;
+      --muted:#B9C7D0;
+      --line: rgba(255,255,255,.10);
+      --accent:#F07A12;
+      --accent-2:#FF9A3C;
+      --ok:#53E6B5;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --shadow-soft: 0 16px 40px rgba(0,0,0,.30);
+      --radius: 22px;
+      --radius-xl: 30px;
+      --container: 1080px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(240,122,18,.18), transparent 55%),
+                  radial-gradient(1000px 600px at 90% 10%, rgba(255,154,60,.10), transparent 60%),
+                  linear-gradient(180deg, var(--bg), #0A1216 80%);
+      color:var(--ink);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+    .container{ width:min(var(--container), calc(100% - 40px)); margin:0 auto; }
+
+    .glow{
+      position:absolute; inset:-2px;
+      background: radial-gradient(650px 300px at 20% 10%, rgba(240,122,18,.22), transparent 55%),
+                  radial-gradient(700px 320px at 80% 0%, rgba(255,154,60,.14), transparent 60%);
+      filter: blur(16px);
+      opacity:.8;
+      z-index:0;
+      pointer-events:none;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color:var(--ink);
+      cursor:pointer;
+      transition: transform .15s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+      user-select:none;
+      white-space:nowrap;
+      position:relative;
+      overflow:hidden;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
+    .btn:active{ transform: translateY(0); }
+    .btn.primary{
+      border-color: rgba(240,122,18,.55);
+      background: linear-gradient(180deg, rgba(240,122,18,.92), rgba(220,95,10,.92));
+      box-shadow: 0 18px 45px rgba(240,122,18,.22);
+    }
+    .btn.primary:hover{
+      border-color: rgba(255,154,60,.75);
+      box-shadow: 0 20px 55px rgba(240,122,18,.26);
+    }
+    .btn.ghost{ background: rgba(0,0,0,0); }
+
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(10,18,22,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(14px);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .brand img{
+      width:42px; height:42px; border-radius:50%;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 12px 30px rgba(0,0,0,.28);
+      object-fit:cover;
+    }
+    .brand .name{ display:flex; flex-direction:column; line-height:1.05; }
+    .brand .name strong{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; }
+    .brand .name span{ font-size:12px; color:var(--muted); margin-top:4px; }
+
+    main{
+      min-height: calc(100vh - 70px);
+      display:grid;
+      place-items:center;
+      padding: 34px 0 46px;
+    }
+
+    .wrap{
+      width:100%;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .card{
+      position:relative;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      transform: translateY(10px);
+      opacity: 0;
+      animation: cardIn .65s ease forwards;
+      animation-delay: .08s;
+    }
+    @keyframes cardIn{
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .card .inner{
+      position:relative;
+      padding: 26px;
+      z-index:1;
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius:999px;
+      color:rgba(236,243,247,.85);
+      backdrop-filter: blur(10px);
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--ok);
+      box-shadow: 0 0 0 6px rgba(83,230,181,.12);
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(30px, 4.2vw, 46px);
+      letter-spacing: -0.02em;
+      line-height:1.05;
+    }
+    .accent{
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip:text; background-clip:text;
+      color:transparent;
+    }
+    p{ margin:0; color: var(--muted); line-height:1.75; }
+
+    .actions{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top: 16px;
+      align-items:center;
+    }
+
+    .side{
+      display:grid;
+      gap:12px;
+      align-content:start;
+    }
+    .mini{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.12);
+      backdrop-filter: blur(10px);
+      transform: translateY(10px);
+      opacity: 0;
+      animation: miniIn .6s ease forwards;
+    }
+    .mini:nth-child(1){ animation-delay: .18s; }
+    .mini:nth-child(2){ animation-delay: .26s; }
+    .mini:nth-child(3){ animation-delay: .34s; }
+    .mini:nth-child(4){ animation-delay: .42s; }
+    @keyframes miniIn{
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .mini strong{
+      display:block;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-size:12px;
+      color: rgba(236,243,247,.92);
+    }
+    .mini span{
+      display:block;
+      margin-top: 8px;
+      color: var(--muted);
+      line-height:1.65;
+      font-size:13px;
+    }
+
+    footer{
+      padding: 18px 0 28px;
+      color: rgba(236,243,247,.70);
+    }
+    footer .foot{
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 14px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      opacity:.9;
+    }
+
+    /* === Animated checkmark === */
+    .success{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      margin-top: 14px;
+    }
+    .checkwrap{
+      width:56px; height:56px;
+      border-radius: 22px;
+      border:1px solid rgba(83,230,181,.22);
+      background: radial-gradient(80px 60px at 30% 20%, rgba(83,230,181,.22), rgba(0,0,0,.10));
+      box-shadow: 0 18px 55px rgba(0,0,0,.35);
+      display:grid;
+      place-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .checkwrap::after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+      transform: rotate(20deg) translateX(-80%);
+      animation: shimmer 1.2s ease forwards;
+      animation-delay: .25s;
+      pointer-events:none;
+    }
+    @keyframes shimmer{
+      to { transform: rotate(20deg) translateX(80%); opacity:0; }
+    }
+
+    .checksvg{
+      width:30px; height:30px;
+    }
+    .checksvg path{
+      stroke: rgba(83,230,181,.98);
+      stroke-width: 3.2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 60;
+      stroke-dashoffset: 60;
+      animation: draw .7s cubic-bezier(.2,.8,.2,1) forwards;
+      animation-delay: .2s;
+      filter: drop-shadow(0 10px 20px rgba(83,230,181,.18));
+    }
+    @keyframes draw{
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* Micro interaction: button subtle shine */
+    .btn.primary::after{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+      transform: rotate(18deg) translateX(-120%);
+      transition: transform .6s ease;
+      opacity:.55;
+      pointer-events:none;
+    }
+    .btn.primary:hover::after{
+      transform: rotate(18deg) translateX(120%);
+    }
+
+    /* WhatsApp floating */
+    .wa-float{
+      position: fixed;
+      left: 16px;
+      bottom: 16px;
+      z-index: 70;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.28);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      transition: transform .15s ease, background .2s ease, border-color .2s ease;
+    }
+    .wa-float:hover{
+      transform: translateY(-2px);
+      background: rgba(0,0,0,.36);
+      border-color: rgba(255,255,255,.20);
+    }
+    .wa-ico{
+      width:40px; height:40px;
+      border-radius: 16px;
+      display:grid; place-items:center;
+      background: rgba(240,122,18,.16);
+      border:1px solid rgba(240,122,18,.24);
+    }
+    .wa-float strong{ font-size:13px; }
+    .wa-float span{ font-size:12px; color: rgba(236,243,247,.74); display:block; margin-top:2px; }
+    .wa-text{ display:block; }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .wrap{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px){
+      .wa-text{ display:none; }
+      .wa-float{ padding:10px; border-radius:18px; }
+      .wa-ico{ width:42px; height:42px; border-radius:18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition:none !important; }
+      .card, .mini{ opacity:1 !important; transform:none !important; }
+      html,body{ scroll-behavior:auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- WhatsApp Floating -->
+  <a class="wa-float"
+     href="https://wa.me/351910082924?text=Olá%20INOVAR%20Remodelações.%20Enviei%20um%20pedido%20pelo%20site%20e%20gostava%20de%20falar%20convosco."
+     target="_blank" rel="noreferrer"
+     aria-label="Falar no WhatsApp">
+    <div class="wa-ico" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path fill="rgba(236,243,247,.92)" d="M19.1 17.3c-.3-.2-1.7-.8-1.9-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7 0-.3-.2-1.4-.5-2.7-1.7-1-1-1.7-2.2-1.9-2.6-.2-.3 0-.5.1-.7.1-.1.3-.4.4-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.8-1-2.5-.3-.7-.6-.6-.7-.6h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.3 3.6c.2.2 2.4 3.7 5.8 5.2.8.3 1.4.5 1.9.6.8.3 1.5.3 2.1.2.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4Z"/>
+        <path fill="rgba(236,243,247,.92)" d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.8 6.4L3 29l6.8-1.8c1.9 1 4.1 1.6 6.2 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3Zm0 23.2c-2 0-3.9-.5-5.5-1.5l-.4-.2-4 1.1 1.1-3.9-.2-.4c-1.1-1.7-1.6-3.6-1.6-5.6C5.4 9.9 10 5.4 16 5.4s10.6 4.5 10.6 10.6S22.1 26.2 16 26.2Z"/>
+      </svg>
+    </div>
+    <div class="wa-text">
+      <strong>WhatsApp</strong>
+      <span>Resposta rápida</span>
+    </div>
+  </a>
+
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="index.html" aria-label="Voltar ao início">
+          <img src="assets/logo.jpeg" alt="Logo INOVAR Remodelações" />
+          <div class="name">
+            <strong>INOVAR</strong>
+            <span>Lisboa • Alverca</span>
+          </div>
+        </a>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="index.html#orçamento">Novo pedido</a>
+          <a class="btn primary" href="index.html">Voltar ao site →</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="wrap">
+        <section class="card" aria-label="Confirmação">
+          <div class="glow" aria-hidden="true"></div>
+
+          <div class="inner">
+            <div class="pill">
+              <span class="dot" aria-hidden="true"></span>
+              <span>Pedido enviado com sucesso</span>
+            </div>
+
+            <div class="success" aria-label="Sucesso">
+              <div class="checkwrap" aria-hidden="true">
+                <svg class="checksvg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 7L10.5 16.5L4 10" />
+                </svg>
+              </div>
+              <div>
+                <h1 style="margin:0;">
+                  Obrigado — <span class="accent">recebemos a tua mensagem.</span>
+                </h1>
+                <p style="margin-top:10px;">
+                  A equipa <strong>INOVAR Remodelações</strong> vai responder com rapidez e clareza.
+                  Se for urgente, fala connosco já pelo WhatsApp ou liga diretamente.
+                </p>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="btn primary"
+                 href="https://wa.me/351910082924?text=Olá%20INOVAR%20Remodelações.%20Enviei%20um%20pedido%20pelo%20site%20e%20queria%20falar%20convosco."
+                 target="_blank" rel="noreferrer">Falar no WhatsApp →</a>
+              <a class="btn" href="tel:+351910082924">📞 Ligar 910 082 924</a>
+              <a class="btn ghost" href="index.html#galeria">Ver portfólio</a>
+            </div>
+
+            <p style="margin-top:14px; color: rgba(236,243,247,.70); font-size:12px; line-height:1.6;">
+              Dica: se não vires resposta, verifica a pasta “spam” e confirma que o email inserido está correto.
+            </p>
+          </div>
+        </section>
+
+        <aside class="side" aria-label="Contactos rápidos">
+          <div class="mini">
+            <strong>Zona de atuação</strong>
+            <span>Lisboa e Alverca</span>
+          </div>
+          <div class="mini">
+            <strong>Modelo</strong>
+            <span>Gestão e execução (chave-na-mão)</span>
+          </div>
+          <div class="mini">
+            <strong>Email</strong>
+            <span>
+              <a href="mailto:inovarremodelacoes1@gmail.com">inovarremodelacoes1@gmail.com</a><br/>
+              <a href="mailto:inovarremodelacoes@gmail.com">inovarremodelacoes@gmail.com</a>
+            </span>
+          </div>
+          <div class="mini">
+            <strong>Assinatura</strong>
+            <span>INOVAR Remodelações — Rigor, design e perfeição.</span>
+          </div>
+        </aside>
+      </div>
+
+      <footer>
+        <div class="foot">
+          <div>© <span id="year"></span> INOVAR Remodelações.</div>
+          <div>Rigor, design e perfeição.</div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
