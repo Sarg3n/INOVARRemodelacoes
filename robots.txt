@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://SEU-DOMINIO.pt/sitemap.xml
+Sitemap: https://sarg3n.github.io/INOVARRemodelacoes/sitemap.xml
