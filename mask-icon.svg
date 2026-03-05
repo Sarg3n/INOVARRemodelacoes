@@ -1,6 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <circle cx="256" cy="256" r="256" fill="black"/>
-  <rect x="150" y="160" width="200" height="200" fill="white"/>
-  <circle cx="256" cy="140" r="40" fill="white"/>
-  <path d="M300 160 Q380 160 380 240 Q380 320 300 320 L260 320 L260 160 Z" fill="white"/>
+  <!-- Safari pinned tab uses this as a MASK (monochrome). -->
+  <circle cx="256" cy="256" r="256" fill="#000"/>
+  <!-- Stylized IR mark (approximation) -->
+  <rect x="150" y="170" width="210" height="210" rx="0" ry="0" fill="#fff"/>
+  <circle cx="235" cy="150" r="38" fill="#fff"/>
+  <path d="M235 170 L235 360" stroke="#000" stroke-width="0"/>
+  <path d="M300 170
+           Q380 170 380 245
+           Q380 320 300 320
+           L270 320
+           L270 360
+           L230 360
+           L230 170
+           Z" fill="#fff"/>
 </svg>
