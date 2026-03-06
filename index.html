@@ -35,6 +35,41 @@
   <meta name="msapplication-TileColor" content="#0E171D" />
   <meta name="msapplication-config" content="browserconfig.xml" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "INOVAR Remodelações",
+    "image": "https://sarg3n.github.io/INOVARRemodelacoes/assets/og-image.png",
+    "url": "https://sarg3n.github.io/INOVARRemodelacoes/",
+    "telephone": "+351933417357",
+    "email": "inovarremodelacoes1@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lisboa",
+      "addressCountry": "PT"
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Lisboa"
+      },
+      {
+        "@type": "City",
+        "name": "Alverca"
+      }
+    ],
+    "sameAs": [
+      "https://instagram.com/inovar.remodelacoes"
+    ]
+  }
+  </script>
+
+  <meta name="geo.region" content="PT-LIS">
+  <meta name="geo.placename" content="Lisboa">
+  <meta name="geo.position" content="38.8400253;-9.0819759">
+  <meta name="ICBM" content="38.8400253, -9.0819759">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
@@ -82,16 +117,13 @@
 <body class="page-home">
   <!-- WhatsApp Floating -->
   <a class="wa-float"
-     href="https://wa.me/351910082924?text=Olá%20INOVAR%20Remodelações.%20Quero%20um%20orçamento%20para%20uma%20remodelação%20(em%20Lisboa/Alverca)."
-     target="_blank" rel="noreferrer"
-     aria-label="Falar no WhatsApp">
-    <span class="wa-ico" aria-hidden="true">
-      <img src="assets/whatsapp.png" alt="" aria-hidden="true" />
-    </span>
-    <span class="wa-text">
-      <strong>WhatsApp</strong>
-      <small>Resposta rápida</small>
-    </span>
+    href="https://wa.me/351910082924?text=Olá%20INOVAR%20Remodelações.%20Quero%20um%20orçamento%20para%20uma%20remodelação%20(em%20Lisboa/Alverca)."
+    target="_blank"
+    rel="noreferrer"
+    aria-label="WhatsApp">
+
+    <img src="assets/whatsapp.png" alt="WhatsApp">
+
   </a>
 
   <!-- Backdrop (fecha menu ao clicar fora) -->
@@ -100,7 +132,7 @@
   <header class="site-header">
     <div class="container nav-row">
       <a class="brand" href="#top" aria-label="INOVAR Remodelações">
-        <img src="assets/logo.jpeg" alt="Logo INOVAR Remodelações" />
+        <img src="assets/favicon.png" alt="Logo INOVAR Remodelações" />
         <span class="brand-txt">
           <strong>INOVAR</strong>
           <span>Rigor, design e perfeição.</span>
@@ -116,7 +148,7 @@
       </nav>
 
       <div class="nav-actions">
-        <a class="btn btn-ghost btn-sm" href="tel:+351910082924" aria-label="Ligar">📞</a>
+        <a class="btn btn-ghost btn-sm" href="tel:+351933417357" aria-label="Ligar">📞</a>
 
         <button class="btn btn-ghost btn-sm icon-btn" id="themeToggle" type="button" aria-label="Mudar tema" title="Mudar tema">
           <span id="themeIcon" aria-hidden="true">☀️</span>
@@ -151,7 +183,7 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <h1>
-            O novo padrão da <span class="accent">remodelação premium</span>.<br />
+            Remodelações premium em <span class="accent">Lisboa e Alverca</span>.<br />
           </h1>
 
           <p class="lead">
@@ -172,7 +204,7 @@
 
         <aside class="hero-card" aria-label="Destaque visual">
           <div class="hero-media" role="img" aria-label="Vídeo de remodelação premium">
-            <video autoplay muted playsinline loop preload="auto">
+            <video autoplay muted playsinline loop preload="metadata" poster="assets/inovarremodelacoevideostart.jpg">
               <source src="assets/video1_rotate.mp4" type="video/mp4" />
               O seu browser não suporta vídeo HTML5.
             </video>
@@ -313,16 +345,13 @@
           <p class="sub">Para urgências, recomendamos chamada ou WhatsApp.</p>
 
           <div class="row-actions">
-            <a class="btn btn-primary" href="tel:+351910082924">📞 910 082 924</a>
+            <a class="btn btn-primary" href="tel:+351933417357">📞 910 082 924</a>
             <a class="btn btn-ghost"
                href="https://wa.me/351910082924?text=Olá%20INOVAR%20Remodelações.%20Quero%20um%20orçamento%20para%20uma%20remodelação%20(em%20Lisboa/Alverca)."
                target="_blank" rel="noreferrer">WhatsApp</a>
             <a class="btn btn-ghost" href="mailto:inovarremodelacoes1@gmail.com">✉️ Email</a>
           </div>
 
-          <p class="hint">
-            Nota: na primeira submissão, confirma o email de receção no FormSubmit.
-          </p>
         </div>
 
         <form class="card form" id="quoteForm"
@@ -396,7 +425,7 @@
           <h3>INOVAR Remodelações</h3>
 
           <div class="contact-list">
-            <a class="contact-item" href="tel:+351910082924"><span>📞</span><div><strong>910 082 924</strong><small>Ligar agora</small></div></a>
+            <a class="contact-item" href="tel:+351933417357"><span>📞</span><div><strong>910 082 924</strong><small>Ligar agora</small></div></a>
             <a class="contact-item" href="tel:+351210138331"><span>☎️</span><div><strong>210 138 331</strong><small>Telefone fixo</small></div></a>
             <a class="contact-item" href="mailto:inovarremodelacoes1@gmail.com"><span>✉️</span><div><strong>Email</strong><small>inovarremodelacoes1@gmail.com</small></div></a>
             <a class="contact-item" target="_blank" rel="noreferrer"
@@ -423,11 +452,6 @@
                 A <strong>INOVAR Remodelações</strong> atua principalmente na zona de
                 <strong>Lisboa e Alverca</strong>, garantindo acompanhamento próximo e
                 gestão rigorosa das obras.
-              </p>
-
-              <p>
-                Se preferires, podemos marcar uma visita técnica ao local da obra
-                para avaliação e proposta detalhada.
               </p>
 
               <div class="location-actions">
@@ -485,7 +509,7 @@
       <div class="container footer-row">
         <div class="footer-left">
           <div class="footer-brand">
-            <img src="assets/logo.jpeg" alt="Logo INOVAR Remodelações" />
+            <img src="assets/favicon.png" alt="Logo INOVAR Remodelações" />
             <div>
               <strong>INOVAR</strong>
               <span>Lisboa • Alverca</span>
