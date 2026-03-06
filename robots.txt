@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sarg3n.github.io/INOVARRemodelacoes/sitemap.xml
+Sitemap: https://iremodelacoes.com/sitemap.xml
