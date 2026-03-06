@@ -831,20 +831,24 @@ html[data-theme="light"] .form select option{
 
 .follow{
   margin-top: 18px;
-  padding-top: 14px;
+  padding: 14px 0 24px;
   border-top: 1px solid var(--line);
   text-align: center;
+}
+
+.follow-icons{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content:center;
+  align-items:center;
 }
 .follow-title{
   font-weight: 800;
   color: var(--muted);
   margin-bottom: 10px;
 }
-.follow-icons{
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+
 #contactos .follow{
   text-align:center;
 }
