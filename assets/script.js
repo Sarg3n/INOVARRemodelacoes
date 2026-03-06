@@ -6,6 +6,8 @@
    - Back to top button
    - Year
    - Gallery carousel (stable)
+   - Gallery autoplay always ON
+   - Gallery fullscreen lightbox
    =========================== */
 
 (() => {
@@ -45,7 +47,7 @@
 
   initTheme();
 
-  // ---------- MOBILE MENU (FIXED) ----------
+  // ---------- MOBILE MENU ----------
   const burger = $("#burger");
   const mobileMenu = $("#mobileMenu");
   const backdrop = $("#menuBackdrop");
@@ -59,7 +61,6 @@
   const openMenu = () => {
     if (!burger || !mobileMenu) return;
 
-    // force clean state
     mobileMenu.removeAttribute("hidden");
     burger.setAttribute("aria-expanded", "true");
     document.body.classList.add("menu-open");
@@ -71,7 +72,6 @@
 
     lockScroll(true);
 
-    // focus first link (helps mobile accessibility)
     const firstLink = mobileMenu.querySelector("a");
     firstLink?.focus?.();
   };
@@ -91,7 +91,6 @@
     lockScroll(false);
   };
 
-  // ensure starts closed (prevents “always active”)
   if (burger) burger.setAttribute("aria-expanded", "false");
   if (mobileMenu) mobileMenu.setAttribute("hidden", "");
   if (backdrop) backdrop.hidden = true;
@@ -101,26 +100,21 @@
     isMenuOpen() ? closeMenu() : openMenu();
   });
 
-  // close by clicking backdrop
   backdrop?.addEventListener("click", closeMenu);
 
-  // close when clicking a link
   mobileMenu?.addEventListener("click", (e) => {
     const a = e.target.closest("a");
     if (a) closeMenu();
   });
 
-  // close on ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && isMenuOpen()) closeMenu();
   });
 
-  // close on resize to desktop
   window.addEventListener("resize", () => {
     if (window.innerWidth > 980 && isMenuOpen()) closeMenu();
   });
 
-  // close on hashchange (extra safety)
   window.addEventListener("hashchange", () => {
     if (isMenuOpen()) closeMenu();
   });
@@ -160,22 +154,41 @@
   const prevBtn = $("#prevBtn");
   const nextBtn = $("#nextBtn");
   const tabs = $$(".tab");
-  const autoplayBtn = $("#autoplayBtn");
+
 
   // If this page has no gallery, stop here
   if (!stage || !thumbs || !counter) return;
 
-  // Replace with your files (ensure paths are correct inside /assets)
   const MEDIA = [
-    { type: "image", title: "Sala — After", subtitle: "Acabamento premium + iluminação", src: "assets/work7.jpeg", thumb: "assets/work7.jpeg", tag: "After" },
-    { type: "image", title: "Cozinha — Detalhe", subtitle: "Linhas limpas e materiais nobres", src: "assets/work11.jpeg", thumb: "assets/work11.jpeg", tag: "Detalhe" },
-    { type: "video", title: "", subtitle: "", src: "assets/video1.mp4", thumb: "assets/work2.jpeg", tag: "Vídeo" },
+    { type: "image", title: "WC — Detalhe", subtitle: "Linhas limpas e materiais nobres", src: "assets/work36.jpeg", thumb: "assets/work36.jpeg", tag: "" },
+    { type: "image", title: "Armazém — Divisórias", subtitle: "Rigor e precisão", src: "assets/work33.jpeg", thumb: "assets/work33.jpeg", tag: "" },
+    { type: "image", title: "Lobby Sala — Depois", subtitle: "Acabamento premium + iluminação", src: "assets/work8.jpeg", thumb: "assets/work8.jpeg", tag: "" },
+    { type: "image", title: "Lobby Sala — Depois", subtitle: "Linhas limpas e materiais nobres", src: "assets/work12.jpeg", thumb: "assets/work12.jpeg", tag: "" },
+    { type: "image", title: "WC — Simplicidade", subtitle: "Acabamento premium + iluminação", src: "assets/work24.jpeg", thumb: "assets/work24.jpeg", tag: "" },
+    { type: "image", title: "Garagem — Boa execução", subtitle: "Régua e esquadro", src: "assets/work2.jpeg", thumb: "assets/work2.jpeg", tag: "" },
+    { type: "image", title: "Garagem — Boa execução", subtitle: "Régua e esquadro", src: "assets/work3.jpeg", thumb: "assets/work3.jpeg", tag: "" },
+    { type: "image", title: "WC — Detalhe", subtitle: "Linhas limpas e materiais nobres", src: "assets/work4.jpeg", thumb: "assets/work4.jpeg", tag: "" },
+    { type: "image", title: "Flutuante — Em processo", subtitle: "", src: "assets/work5.jpeg", thumb: "assets/work5.jpeg", tag: "" },
+    { type: "image", title: "Sala — Detalhe", subtitle: "Ripado", src: "assets/work6.jpeg", thumb: "assets/work6.jpeg", tag: "" },
+    { type: "image", title: "Quarto — Detalhe", subtitle: "Acabamento premium + iluminação", src: "assets/work9.jpeg", thumb: "assets/work9.jpeg", tag: "" },
+    { type: "image", title: "Quarto — Detalhe", subtitle: "Linhas limpas e materiais nobres", src: "assets/work10.jpeg", thumb: "assets/work10.jpeg", tag: "" },
+    { type: "image", title: "Sala — Depois", subtitle: "Acabamento premium + iluminação", src: "assets/work11.jpeg", thumb: "assets/work11.jpeg", tag: "" },
+    { type: "image", title: "Quarto — Depois", subtitle: "Acabamento premium + iluminação", src: "assets/work13.jpeg", thumb: "assets/work13.jpeg", tag: "" },
+    { type: "image", title: "Kitchnette — Detalhe", subtitle: "Linhas limpas e materiais nobres", src: "assets/work14.jpeg", thumb: "assets/work14.jpeg", tag: "" },
+    { type: "image", title: "Sala — Detalhe", subtitle: "Acabamento premium + iluminação", src: "assets/work15.jpeg", thumb: "assets/work15.jpeg", tag: "" },
+    { type: "image", title: "WC — Detalhe", subtitle: "Acabamento premium + iluminação", src: "assets/work17.jpeg", thumb: "assets/work17.jpeg", tag: "" },
+    { type: "image", title: "WC — Detalhe", subtitle: "Linhas limpas e materiais nobres", src: "assets/work18.jpeg", thumb: "assets/work18.jpeg", tag: "" },
+    { type: "image", title: "Sala — Detalhe", subtitle: "Linhas limpas e materiais nobres", src: "assets/work38.jpeg", thumb: "assets/work38.jpeg", tag: "" },
+
+    { type: "video", title: "", subtitle: "", src: "assets/video3.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
+    { type: "video", title: "", subtitle: "", src: "assets/video4.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
+    { type: "video", title: "", subtitle: "", src: "assets/video2.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
   ];
 
   let filter = "all";
   let items = [];
   let index = 0;
-  let autoplay = false;
+  let autoplay = true;
   let timer = null;
 
   const escapeHtml = (str) =>
@@ -195,15 +208,28 @@
     counter.textContent = items.length ? `${index + 1} / ${items.length}` : "0 / 0";
   };
 
-  const ensureThumbVisible = (i) => {
-    const el = thumbs.querySelectorAll(".thumb")[i];
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const parentRect = thumbs.getBoundingClientRect();
-    const offLeft = rect.left < parentRect.left;
-    const offRight = rect.right > parentRect.right;
-    if (offLeft || offRight) el.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-  };
+const ensureThumbVisible = (i) => {
+  const el = thumbs.querySelectorAll(".thumb")[i];
+  if (!el) return;
+
+  const elLeft = el.offsetLeft;
+  const elRight = elLeft + el.offsetWidth;
+
+  const viewLeft = thumbs.scrollLeft;
+  const viewRight = viewLeft + thumbs.clientWidth;
+
+  if (elLeft < viewLeft) {
+    thumbs.scrollTo({
+      left: elLeft - 8,
+      behavior: "smooth"
+    });
+  } else if (elRight > viewRight) {
+    thumbs.scrollTo({
+      left: elRight - thumbs.clientWidth + 8,
+      behavior: "smooth"
+    });
+  }
+};
 
   const go = (i) => {
     if (!items.length) return;
@@ -215,7 +241,6 @@
     const active = stage.querySelector(`.slide[data-i="${index}"]`);
     active?.classList.add("active");
 
-    // pause other videos
     slides.forEach((s, si) => {
       if (si !== index) {
         const v = s.querySelector("video");
@@ -234,11 +259,11 @@
   const build = () => {
     items = filteredItems();
 
-    // remove existing slides
     stage.querySelectorAll(".slide").forEach((s) => s.remove());
 
     if (!items.length) {
-      stage.insertAdjacentHTML("afterbegin",
+      stage.insertAdjacentHTML(
+        "afterbegin",
         `<div class="slide active" data-i="0" style="position:absolute; inset:0; display:grid; place-items:center; padding:18px;">
            <div style="color: var(--muted); text-align:center;">Sem itens para mostrar neste filtro.</div>
          </div>`
@@ -274,21 +299,6 @@
         frame.appendChild(img);
       }
 
-      const shade = document.createElement("div");
-      shade.className = "shade";
-      frame.appendChild(shade);
-
-      const meta = document.createElement("div");
-      meta.className = "meta";
-      meta.innerHTML = `
-        <div>
-          <strong>${escapeHtml(m.title)}</strong>
-          <span>${escapeHtml(m.subtitle || "")}</span>
-        </div>
-        <div class="tag">${escapeHtml(m.tag || (m.type === "video" ? "Vídeo" : "Imagem"))}</div>
-      `;
-      frame.appendChild(meta);
-
       slide.appendChild(frame);
       stage.appendChild(slide);
     });
@@ -298,17 +308,17 @@
       const t = document.createElement("button");
       t.type = "button";
       t.className = "thumb" + (i === index ? " active" : "");
-      t.setAttribute("aria-label", `Abrir ${m.title}`);
+      t.setAttribute("aria-label", `Abrir ${m.title || m.tag || "item"}`);
       t.addEventListener("click", () => go(i));
 
       const img = document.createElement("img");
       img.src = m.thumb || m.src;
-      img.alt = `Miniatura ${m.title}`;
+      img.alt = `Miniatura ${m.title || m.tag || "item"}`;
       img.loading = "lazy";
 
       const meta = document.createElement("div");
       meta.className = "tmeta";
-      meta.textContent = m.title;
+      meta.textContent = m.title || m.tag || "Vídeo";
 
       t.appendChild(img);
       t.appendChild(meta);
@@ -321,54 +331,38 @@
   prevBtn?.addEventListener("click", prev);
   nextBtn?.addEventListener("click", next);
 
-// swipe (pointer)
-let startX = 0;
-let dx = 0;
 
-stage.addEventListener("pointerdown", (e) => {
-  // ✅ If the user is clicking the nav arrows, don't start swipe capture
-  if (e.target.closest(".nav-btn")) return;
-
-  startX = e.clientX;
-  dx = 0;
-  stage.setPointerCapture(e.pointerId);
-});
-
-stage.addEventListener("pointermove", (e) => {
-  dx = e.clientX - startX;
-});
-
-stage.addEventListener("pointerup", (e) => {
-  // ✅ Ignore swipe end if it started on arrows
-  if (e.target.closest(".nav-btn")) return;
-
-  if (Math.abs(dx) > 45) dx < 0 ? next() : prev();
-});
-
-  // tabs
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
       tabs.forEach((t) => {
         t.classList.remove("active");
         t.setAttribute("aria-selected", "false");
       });
+
       tab.classList.add("active");
       tab.setAttribute("aria-selected", "true");
       filter = tab.getAttribute("data-type") || "all";
       index = 0;
       build();
+      setAutoplay(true);
     });
   });
 
-  // autoplay
+  // keyboard support
+  document.addEventListener("keydown", (e) => {
+
+    if (e.key === "ArrowLeft") prev();
+    if (e.key === "ArrowRight") next();
+  });
+
   const setAutoplay = (v) => {
     autoplay = v;
-    autoplayBtn?.setAttribute("aria-pressed", String(autoplay));
-    if (autoplayBtn) autoplayBtn.textContent = autoplay ? "Auto: ON" : "Auto";
 
     if (timer) clearInterval(timer);
+
     if (autoplay) {
       timer = setInterval(() => {
+
         const activeVideo = stage.querySelector(".slide.active video");
         if (activeVideo && !activeVideo.paused) return;
         next();
@@ -376,7 +370,6 @@ stage.addEventListener("pointerup", (e) => {
     }
   };
 
-  autoplayBtn?.addEventListener("click", () => setAutoplay(!autoplay));
-
   build();
+  setAutoplay(true);
 })();

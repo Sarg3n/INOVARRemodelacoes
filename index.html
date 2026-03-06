@@ -26,9 +26,9 @@
   <meta name="twitter:image" content="https://sarg3n.github.io/INOVARRemodelacoes/assets/og-image.png" />
 
   <!-- Favicons (Project Pages-safe) -->
-  <link rel="icon" href="favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="mask-icon" href="mask-icon.svg" color="#F07A12" />
@@ -93,10 +93,8 @@
       pointer-events: auto;
     }
 
-    /* garante que "hidden" ganha sempre */
     #mobileMenu[hidden] { display: none !important; }
 
-    /* ícone WhatsApp (imagem) */
     .wa-ico img{
       width: 18px;
       height: 18px;
@@ -104,7 +102,6 @@
       object-fit: contain;
     }
 
-    /* vídeo no hero */
     .hero-media video{
       width: 100%;
       height: 100%;
@@ -121,12 +118,10 @@
     target="_blank"
     rel="noreferrer"
     aria-label="WhatsApp">
-
     <img src="assets/whatsapp.png" alt="WhatsApp">
-
   </a>
 
-  <!-- Backdrop (fecha menu ao clicar fora) -->
+  <!-- Backdrop -->
   <div class="menu-backdrop" id="menuBackdrop" hidden></div>
 
   <header class="site-header">
@@ -161,7 +156,6 @@
     </div>
 
     <div class="container mobile-wrap">
-      <!-- ✅ começa SEMPRE fechado -->
       <div class="mobile" id="mobileMenu" hidden>
         <a href="#servicos">Serviços</a>
         <a href="#processo">Processo</a>
@@ -315,7 +309,6 @@
 
           <div class="gallery-tools">
             <span class="pill small" id="counter">0 / 0</span>
-            <button class="btn btn-ghost btn-sm" id="autoplayBtn" type="button" aria-pressed="false">Auto</button>
           </div>
         </div>
 
@@ -345,13 +338,12 @@
           <p class="sub">Para urgências, recomendamos chamada ou WhatsApp.</p>
 
           <div class="row-actions">
-            <a class="btn btn-primary" href="tel:+351933417357">📞 910 082 924</a>
+            <a class="btn btn-primary" href="tel:+351933417357">📞 933 417 357</a>
             <a class="btn btn-ghost"
                href="https://wa.me/351910082924?text=Olá%20INOVAR%20Remodelações.%20Quero%20um%20orçamento%20para%20uma%20remodelação%20(em%20Lisboa/Alverca)."
                target="_blank" rel="noreferrer">WhatsApp</a>
             <a class="btn btn-ghost" href="mailto:inovarremodelacoes1@gmail.com">✉️ Email</a>
           </div>
-
         </div>
 
         <form class="card form" id="quoteForm"
@@ -425,7 +417,7 @@
           <h3>INOVAR Remodelações</h3>
 
           <div class="contact-list">
-            <a class="contact-item" href="tel:+351933417357"><span>📞</span><div><strong>910 082 924</strong><small>Ligar agora</small></div></a>
+            <a class="contact-item" href="tel:+351933417357"><span>📞</span><div><strong>933 417 357</strong><small>Ligar agora</small></div></a>
             <a class="contact-item" href="tel:+351210138331"><span>☎️</span><div><strong>210 138 331</strong><small>Telefone fixo</small></div></a>
             <a class="contact-item" href="mailto:inovarremodelacoes1@gmail.com"><span>✉️</span><div><strong>Email</strong><small>inovarremodelacoes1@gmail.com</small></div></a>
             <a class="contact-item" target="_blank" rel="noreferrer"
@@ -462,24 +454,20 @@
                 </a>
               </div>
             </div>
-                <div class="location-map" style="border-top:1px solid rgba(255,255,255,.10);">
-                  
-                  <iframe
-                    title="Localização INOVAR Remodelações"
-                    src="https://www.google.com/maps?q=38.8400253,-9.0819759&z=16&output=embed"
-                    width="100%"
-                    height="380"
-                    style="border:0; display:block;"
-                    loading="lazy"
-                    allowfullscreen>
-                  </iframe>
-                  
-                </div>
+
+            <div class="location-map" style="border-top:1px solid rgba(255,255,255,.10);">
+              <iframe
+                title="Localização INOVAR Remodelações"
+                src="https://www.google.com/maps?q=38.8400253,-9.0819759&z=16&output=embed"
+                width="100%"
+                height="380"
+                style="border:0; display:block;"
+                loading="lazy"
+                allowfullscreen>
+              </iframe>
+            </div>
           </div>
 
- 
-      
-        
           <div class="follow">
             <div class="follow-title">Siga-nos:</div>
             <div class="follow-icons" aria-label="Redes sociais">
@@ -500,34 +488,40 @@
               </a>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
     <footer class="footer">
-      <div class="container footer-row">
-        <div class="footer-left">
-          <div class="footer-brand">
-            <img src="assets/favicon.png" alt="Logo INOVAR Remodelações" />
-            <div>
-              <strong>INOVAR</strong>
-              <span>Lisboa • Alverca</span>
-            </div>
-          </div>
-          <div class="footer-copy">
-            © <span id="year"></span> INOVAR Remodelações. <span class="muted">Rigor, design e perfeição.</span>
+  <div class="container footer-row">
+    <div class="footer-left">
+
+      <div class="footer-brand">
+
+        <img src="assets/favicon.png" alt="Logo INOVAR Remodelações" />
+
+        <div class="footer-text">
+          <strong>© <span id="year"></span> INOVAR Remodelações.</strong>
+
+          <div class="footer-sub">
+            <span class="muted">Rigor, design e perfeição.</span>
+            <span>Lisboa • Alverca</span>
           </div>
         </div>
 
-        <div class="footer-links">
-          <a href="#servicos">Serviços</a>
-          <a href="#processo">Processo</a>
-          <a href="#orcamento">Orçamento</a>
-          <a href="#contactos">Contactos</a>
-        </div>
       </div>
-    </footer>
+
+    </div>
+
+    <div class="footer-links">
+      <a href="#servicos">Serviços</a>
+      <a href="#processo">Processo</a>
+      <a href="#orcamento">Orçamento</a>
+      <a href="#contactos">Contactos</a>
+    </div>
+
+  </div>
+</footer>
 
     <div class="topbtn" id="topbtn">
       <button class="btn btn-ghost btn-sm" type="button" id="backToTop">↑ Topo</button>
