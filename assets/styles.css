@@ -1045,11 +1045,15 @@ html[data-theme="light"] .form select option{
   padding: 34px 0 0;
 }
 .thanks-wrap{
-  display:grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 16px;
-  align-items:start;
-  padding: 24px 0 6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:70vh;
+  padding:40px 0;
+}
+.thanks-card{
+  max-width:720px;
+  width:100%;
 }
 .thanks-card h1{
   margin: 12px 0 10px;
