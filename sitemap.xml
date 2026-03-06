@@ -6,11 +6,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://iremodelacoes.com/index.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
     <loc>https://iremodelacoes.com/thanks.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.2</priority>
