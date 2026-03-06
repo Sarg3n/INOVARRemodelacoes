@@ -169,6 +169,9 @@
     { type: "image", title: "Garagem — Boa execução", subtitle: "Régua e esquadro", src: "assets/work3.jpeg", thumb: "assets/work3.jpeg", tag: "" },
     { type: "image", title: "WC — Detalhe", subtitle: "Linhas limpas e materiais nobres", src: "assets/work4.jpeg", thumb: "assets/work4.jpeg", tag: "" },
     { type: "image", title: "Flutuante — Em processo", subtitle: "", src: "assets/work5.jpeg", thumb: "assets/work5.jpeg", tag: "" },
+    { type: "image", title: "Flutuante — Detalhe", subtitle: "Linhas limpas e materiais nobres", src: "assets/workchao1.jpeg", thumb: "assets/workchao1.jpeg", tag: "" },
+    { type: "image", title: "Flutuante — Em processo", subtitle: "Linhas limpas e materiais nobres", src: "assets/workchao2.jpeg", thumb: "assets/workchao2.jpeg", tag: "" },
+    { type: "image", title: "Flutuante — Em processo", subtitle: "Linhas limpas e materiais nobres", src: "assets/workchao3.jpeg", thumb: "assets/workchao3.jpeg", tag: "" },
     { type: "image", title: "Sala — Detalhe", subtitle: "Ripado", src: "assets/work6.jpeg", thumb: "assets/work6.jpeg", tag: "" },
     { type: "image", title: "Quarto — Detalhe", subtitle: "Acabamento premium + iluminação", src: "assets/work9.jpeg", thumb: "assets/work9.jpeg", tag: "" },
     { type: "image", title: "Quarto — Detalhe", subtitle: "Linhas limpas e materiais nobres", src: "assets/work10.jpeg", thumb: "assets/work10.jpeg", tag: "" },
@@ -180,8 +183,14 @@
     { type: "image", title: "WC — Detalhe", subtitle: "Linhas limpas e materiais nobres", src: "assets/work18.jpeg", thumb: "assets/work18.jpeg", tag: "" },
     { type: "image", title: "Sala — Detalhe", subtitle: "Linhas limpas e materiais nobres", src: "assets/work38.jpeg", thumb: "assets/work38.jpeg", tag: "" },
 
-    { type: "video", title: "", subtitle: "", src: "assets/video3.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
-    { type: "video", title: "", subtitle: "", src: "assets/video4.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
+    { type: "image", title: "Obra — Detalhe", subtitle: "", src: "assets/workcanalizacao1.jpeg", thumb: "assets/workcanalizacao1.jpeg", tag: "" },
+    { type: "image", title: "Obra — Detalhe", subtitle: "", src: "assets/workcanalizacao2.jpeg", thumb: "assets/workcanalizacao2.jpeg", tag: "" },
+    { type: "image", title: "Obra — Detalhe", subtitle: "", src: "assets/workcanalizacao3.jpeg", thumb: "assets/workcanalizacao3.jpeg", tag: "" },
+
+    /*{ type: "video", title: "", subtitle: "", src: "assets/video3.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
+    { type: "video", title: "", subtitle: "", src: "assets/video4.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },*/
+    { type: "video", title: "", subtitle: "", src: "assets/videochao1.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
+    { type: "video", title: "", subtitle: "", src: "assets/videochao2.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
     { type: "video", title: "", subtitle: "", src: "assets/video2.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
   ];
 
@@ -289,7 +298,10 @@ const ensureThumbVisible = (i) => {
         video.src = m.src;
         video.controls = true;
         video.playsInline = true;
-        video.preload = "metadata";
+        video.preload = "none";
+        video.muted = true;
+        video.defaultMuted = true;
+        video.setAttribute("muted", "");
         frame.appendChild(video);
       } else {
         const img = document.createElement("img");
