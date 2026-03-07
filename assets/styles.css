@@ -455,7 +455,7 @@ body.menu-open{
 
 .hero{
   position: relative;
-  padding: 20px 0;
+  padding: 0px 0;
   overflow: hidden;
   isolation: isolate;
   padding-bottom: 50px;
@@ -1340,7 +1340,7 @@ html:not([data-theme="light"]) .social:hover{
    =========================== */
 
 .trust-bar{
-  padding: 10px 0 14px;
+  padding: 0px 0 0px;
 }
 
 .trust-grid{
