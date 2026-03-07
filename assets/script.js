@@ -189,8 +189,6 @@
 
     /*{ type: "video", title: "", subtitle: "", src: "assets/video3.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
     { type: "video", title: "", subtitle: "", src: "assets/video4.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },*/
-    { type: "video", title: "", subtitle: "", src: "assets/videochao1.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
-    { type: "video", title: "", subtitle: "", src: "assets/videochao2.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
     { type: "video", title: "", subtitle: "", src: "assets/video2.mp4", thumb: "assets/inovarremodelacoevideostart.jpg", tag: "" },
   ];
 
@@ -381,6 +379,20 @@ const ensureThumbVisible = (i) => {
       }, 4500);
     }
   };
+
+  const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+        entry.target.classList.add("show");
+        }
+    });
+    },{
+    threshold:0.15
+    });
+
+    reveals.forEach(el=>observer.observe(el));
 
   build();
   setAutoplay(true);
