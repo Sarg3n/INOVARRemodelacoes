@@ -458,17 +458,11 @@ body.menu-open{
   padding: 20px 0;
   overflow: hidden;
   isolation: isolate;
+  padding-bottom: 50px;
 }
 
 .hero::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(900px 520px at 20% 0%, color-mix(in srgb, var(--accent), transparent 82%), transparent 62%),
-    radial-gradient(860px 520px at 95% 10%, color-mix(in srgb, var(--accent-2), transparent 88%), transparent 64%);
-  z-index: 0;
+  display:none;
 }
 
 .hero > *{
@@ -1656,7 +1650,7 @@ html:not([data-theme="light"]) .social:hover{
   inset:-40%;
   background:radial-gradient(
     circle at 20% 100%,
-    rgba(240,122,18,.12),
+    
     transparent 60%
   );
   pointer-events:none;
@@ -1722,4 +1716,75 @@ html:not([data-theme="light"]) .social:hover{
 .reveal.show{
   opacity:1;
   transform:translateY(0);
+}
+.card {
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+:root {
+  --card-glow: rgba(0, 120, 255, 0.25); /* light theme blue */
+}
+
+:root{
+  --card-glow: rgba(59,130,246,0.18);
+}
+
+[data-theme="dark"]{
+  --card-glow: rgba(240,122,18,0.25);
+}
+
+.card{
+  box-shadow:
+    0 8px 22px rgba(0,0,0,0.08),
+    0 0 14px var(--card-glow);
+}
+
+:root{
+  --accent-gradient: rgba(59,130,246,0.10);
+}
+
+[data-theme="dark"]{
+  --accent-gradient: rgba(240,122,18,0.10);
+}
+.card{
+  background: linear-gradient(
+    180deg,
+    var(--accent-gradient),
+    transparent
+  );
+}
+:root{
+  --trust-gradient:
+    radial-gradient(circle at center,
+      rgba(59,130,246,0.10),
+      transparent 70%);
+}
+
+[data-theme="dark"]{
+  --trust-gradient:
+    radial-gradient(circle at center,
+      rgba(240,122,18,0.18),
+      transparent 70%);
+}
+
+:root{
+  --trust-gradient:
+    linear-gradient(
+      90deg,
+      rgba(59,130,246,0.08),
+      rgba(59,130,246,0.02)
+    );
+}
+
+[data-theme="dark"]{
+  --trust-gradient:
+    linear-gradient(
+      90deg,
+      rgba(240,122,18,0.18),
+      rgba(240,122,18,0.04)
+    );
+}
+.trust-bar{
+  background: var(--trust-gradient);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
