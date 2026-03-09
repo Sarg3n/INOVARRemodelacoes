@@ -142,7 +142,7 @@
       <a class="brand" href="#top" aria-label="INOVAR Remodelações">
         <img src="assets/favicon.png" alt="Logo INOVAR Remodelações" />
         <span class="brand-txt">
-          <strong>INOVAR</strong>
+          <strong>INOVAR Remodelações</strong>
           <span>Rigor, design e perfeição.</span>
         </span>
       </a>
@@ -168,17 +168,30 @@
       </div>
     </div>
 
-    <div class="container mobile-wrap">
-      <div class="mobile" id="mobileMenu" hidden>
-        <a href="#servicos">Serviços</a>
-        <a href="#processo">Processo</a>
-        <a href="#galeria">Portfólio</a>
-        <a href="#contactos">Contactos</a>
-        <a href="#localizacao">Localização</a>
+    <div class="mobile-menu-panel" id="mobileMenu" hidden aria-hidden="true">
+      <div class="mobile-menu-inner">
+        <div class="mobile-menu-top">
+          <span class="mobile-menu-kicker">Menu</span>
+          <button
+            class="mobile-menu-close"
+            id="mobileMenuClose"
+            type="button"
+            aria-label="Fechar menu">
+            ✕
+          </button>
+        </div>
 
-        <div class="mobile-cta">
+        <nav class="mobile-menu-nav" aria-label="Menu mobile">
+          <a href="#servicos" class="mobile-menu-link">Serviços</a>
+          <a href="#processo" class="mobile-menu-link">Processo</a>
+          <a href="#galeria" class="mobile-menu-link">Portfólio</a>
+          <a href="#contactos" class="mobile-menu-link">Contactos</a>
+          <a href="#localizacao" class="mobile-menu-link">Localização</a>
+        </nav>
+
+        <div class="mobile-menu-cta">
           <a class="btn btn-primary" href="#contactos">Pedir orçamento →</a>
-          <a class="btn btn-ghost" href="mailto:inovarremodelacoes1@gmail.com">Enviar email</a>
+          <a class="btn btn-ghost mobile-menu-mail" href="mailto:inovarremodelacoes1@gmail.com">Enviar email</a>
         </div>
       </div>
     </div>
@@ -215,44 +228,39 @@
   </div>
 </section>
     <!-- HERO -->
-    <section class="hero reveal">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <h1>
-            Remodelações premium em <span class="accent">Lisboa e Arredores</span>.<br />
-          </h1>
+<section class="hero hero-video reveal">
+  <div class="hero-bg" aria-hidden="true">
+    <video
+      autoplay
+      muted
+      playsinline
+      loop
+      preload="metadata"
+      poster="assets/inovarremodelacoevideostart.jpg"
+    >
+      <source src="assets/video_working_rotate_without_contacts.mp4" type="video/mp4" />
+    </video>
+  </div>
 
-          <p class="lead">
-            Detalhe, rigor e inovação em cada projeto.
-          </p>
+  <div class="hero-overlay"></div>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contactos">Quero um orçamento</a>
-            <a class="btn btn-ghost" href="#galeria">Ver portfólio</a>
-          </div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1>
+        Remodelações premium em <span class="accent">Lisboa e Arredores</span>.
+      </h1>
 
-          <!--<div class="trust">
-            <div class="trust-item">✅ Gestão/Execução</div>
-            <div class="trust-item">✅ Perfecionismo</div>
-            <div class="trust-item">✅ Transparência</div>
-          </div>-->
-        </div>
+      <p class="lead">
+        Detalhe, rigor e inovação em cada projeto.
+      </p>
 
-        <aside class="hero-card" aria-label="Destaque visual">
-          <div class="hero-media" role="img" aria-label="Vídeo de remodelação premium">
-            <video autoplay muted playsinline loop preload="metadata" poster="assets/inovarremodelacoevideostart.jpg">
-              <source src="assets/video1_rotate.mp4" type="video/mp4" />
-              O seu browser não suporta vídeo HTML5.
-            </video>
-          </div>
-          <div class="hero-overlay"></div>
-
-          <div class="hero-meta">
-           
-          </div>
-        </aside>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contactos">Quero um orçamento</a>
+        <a class="btn btn-ghost hero-btn-light" href="#galeria">Ver portfólio</a>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- SERVIÇOS -->
     <section id="servicos" class="section reveal">
