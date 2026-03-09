@@ -1798,6 +1798,24 @@ html[data-theme="light"] .form select option{
   .thanks-wrap{ grid-template-columns: 1fr; }
   .testimonials-grid{ grid-template-columns: 1fr; }
   .stage{ min-height: 520px; }
+    .hero.hero-video::before{
+    animation: none;
+    display: none;
+  }
+
+  .hero.hero-video,
+  .hero-grid{
+    min-height: 100vh;
+  }
+}
+
+.hero.hero-video,
+.hero-bg,
+.hero-bg video,
+.hero.hero-video .hero-overlay{
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 @media (max-width: 900px){
