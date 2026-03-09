@@ -1012,6 +1012,7 @@ body.menu-open{
 .form button.btn{
   width: 100%;
   justify-content: center;
+  margin-bottom: -12px;
 }
 
 .steps{
