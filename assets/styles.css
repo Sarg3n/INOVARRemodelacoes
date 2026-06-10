@@ -2045,19 +2045,22 @@ body {
 .footer-book{
   margin-top: 24px;
   padding-top: 24px;
+
   border-top: 1px solid rgba(255,255,255,.08);
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+}
+
+.footer-book a{
+  display: inline-block;
 }
 
 .footer-book img{
-  max-width: 240px;
+  max-width: 160px;
   width: 100%;
   height: auto;
 
-  border-radius: 14px;
+  border-radius: 12px;
   display: block;
 
   transition: transform .2s ease,
