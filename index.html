@@ -1,16 +1,6 @@
 <!doctype html>
 <html lang="pt" data-theme="dark">
 <head>
-  <!-- Google Tag Manager -->
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id=GTM-WWR7KJVG'+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-WWR7KJVG');
-  </script>
-  <!-- End Google Tag Manager -->
-  
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0E171D" />
@@ -130,16 +120,20 @@
       display: block;
       object-fit: cover;
     }
-  </style>
+  
+/* COOKIE BANNER */
+.cookie-banner{position:fixed;left:20px;right:20px;bottom:20px;z-index:9999;background:#111a20;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px;box-shadow:0 20px 50px rgba(0,0,0,.35);display:none}
+.cookie-banner.show{display:block}
+.cookie-banner h3{margin:0 0 10px;font-size:18px}
+.cookie-banner p{margin:0;line-height:1.6;color:#c9d1d9}
+.cookie-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.cookie-link{color:#F07A12;text-decoration:none}
+.cookie-link:hover{text-decoration:underline}
+
+</style>
 </head>
 
 <body class="page-home">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript>
-  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WWR7KJVG"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
   <!-- WhatsApp Floating -->
   <a class="wa-float"
     href="https://wa.me/351910082924?text=Olá%20INOVAR%20Remodelações.%20Quero%20um%20orçamento%20para%20uma%20remodelação%20(em%20Lisboa/Alverca)."
@@ -634,5 +628,51 @@
       <button class="btn btn-ghost btn-sm" type="button" id="backToTop">↑ Topo</button>
     </div>
   </main>
+
+<!-- Cookie Banner -->
+<div class="cookie-banner" id="cookieBanner">
+  <h3>🍪 Cookies</h3>
+  <p>
+    Utilizamos cookies para melhorar a experiência de navegação,
+    analisar o tráfego do website e otimizar os nossos serviços.
+    Pode aceitar ou rejeitar os cookies não essenciais.
+    Consulte a nossa
+    <a href="/politica-privacidade.html" class="cookie-link">
+      Política de Privacidade e Cookies
+    </a>.
+  </p>
+  <div class="cookie-actions">
+    <button class="btn btn-primary" id="acceptCookies">Aceitar</button>
+    <button class="btn btn-ghost" id="rejectCookies">Rejeitar</button>
+  </div>
+</div>
+
+<script>
+const COOKIE_KEY="cookie_consent";
+function loadGTM(){
+ if(window.gtmLoaded)return;
+ window.gtmLoaded=true;
+ const s=document.createElement("script");
+ s.innerHTML=`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id=GTM-WWR7KJVG'+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WWR7KJVG');`;
+ document.head.appendChild(s);
+}
+document.addEventListener("DOMContentLoaded",()=>{
+ const banner=document.getElementById("cookieBanner");
+ const consent=localStorage.getItem(COOKIE_KEY);
+ if(consent==="accepted"){loadGTM();return;}
+ if(consent==="rejected"){return;}
+ banner.classList.add("show");
+ document.getElementById("acceptCookies").onclick=()=>{
+   localStorage.setItem(COOKIE_KEY,"accepted");
+   banner.remove();
+   loadGTM();
+ };
+ document.getElementById("rejectCookies").onclick=()=>{
+   localStorage.setItem(COOKIE_KEY,"rejected");
+   banner.remove();
+ };
+});
+</script>
+
 </body>
 </html>
