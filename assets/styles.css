@@ -2037,3 +2037,34 @@ body {
 .legal-page ul {
   padding-left: 18px;
 }
+
+/* ===========================
+   Livro de Reclamacoes Eletronico
+   =========================== */
+
+.footer-book{
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.08);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-book img{
+  max-width: 240px;
+  width: 100%;
+  height: auto;
+
+  border-radius: 14px;
+  display: block;
+
+  transition: transform .2s ease,
+              box-shadow .2s ease;
+}
+
+.footer-book a:hover img{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
