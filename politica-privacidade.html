@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="pt">
 <head>
+  <script>
+  (function () {
+    const saved = localStorage.getItem("theme") || "dark";
+    document.documentElement.setAttribute("data-theme", saved);
+  })();
+  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Política de Privacidade e Cookies | INOVAR Remodelações</title>
