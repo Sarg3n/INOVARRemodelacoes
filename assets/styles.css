@@ -1993,3 +1993,47 @@ html[data-theme="light"] .form select option{
     transform: translateY(-30px) scale(1.05);
   }
 }
+
+/* ===========================
+   Terms & Conditions/Privacy terms
+   =========================== */
+:root {
+  --bg: #ffffff;
+  --text: #111a20;
+  --card: #f4f6f8;
+  --border: rgba(0,0,0,.08);
+  --accent: #F07A12;
+}
+
+html[data-theme="dark"] {
+  --bg: #0E171D;
+  --text: #e8eef2;
+  --card: #111a20;
+  --border: rgba(255,255,255,.12);
+  --accent: #F07A12;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background .2s ease, color .2s ease;
+}
+
+.legal-page h1,
+.legal-page h2,
+.legal-page p,
+.legal-page li {
+  color: var(--text);
+}
+
+.legal-page .container {
+  background: var(--bg);
+}
+
+.legal-page a {
+  color: var(--accent);
+}
+
+.legal-page ul {
+  padding-left: 18px;
+}
